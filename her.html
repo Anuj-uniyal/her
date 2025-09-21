@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>For Anu ji ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ff6b81, #ffb86b);
+      font-family: 'Poppins', sans-serif;
+      overflow: hidden;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: white;
+      text-align: center;
+    }
+
+    .btn {
+      background: white;
+      color: #ff6b81;
+      border: none;
+      padding: 15px 30px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border-radius: 50px;
+      cursor: pointer;
+      transition: 0.3s;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+    }
+
+    .btn:hover {
+      transform: scale(1.1);
+      background: #ff6b81;
+      color: white;
+    }
+
+    /* Popup card */
+    .popup {
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      background: white;
+      padding: 40px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      transition: 0.3s ease-in-out;
+      max-width: 300px;
+    }
+
+    .popup.active {
+      transform: translate(-50%, -50%) scale(1);
+    }
+
+    .popup h2 {
+      margin-bottom: 10px;
+      color: #ff6b81;
+    }
+
+    .popup p {
+      font-size: 1rem;
+      color: #444;
+    }
+
+    .close-btn {
+      margin-top: 20px;
+      background: #ff6b81;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 30px;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: 0.3s;
+    }
+
+    .close-btn:hover {
+      background: #ff4757;
+    }
+
+    /* Floating hearts animation */
+    .heart {
+      position: absolute;
+      font-size: 2rem;
+      color: rgba(255,255,255,0.8);
+      animation: float 6s infinite;
+    }
+
+    @keyframes float {
+      0% { transform: translateY(100vh) scale(0.5); opacity: 1; }
+      100% { transform: translateY(-10vh) scale(1); opacity: 0; }
+    }
+  </style>
+</head>
+<body>
+
+  <div>
+    <h1>Hi Anu ji ❤️<br>I have a surprise for you!</h1>
+    <button class="btn" onclick="openPopup()">Click Me 💌</button>
+  </div>
+
+  <div class="popup" id="popup">
+    <h2>Dear Anu ji ❤️</h2>
+    <p>Happy birthday to you 💖</p>
+    <button class="close-btn" onclick="closePopup()">Close</button>
+  </div>
+
+  <script>
+    const popup = document.getElementById("popup");
+
+    function openPopup() {
+      popup.classList.add("active");
+      createHearts();
+    }
+
+    function closePopup() {
+      popup.classList.remove("active");
+    }
+
+    // Floating hearts
+    function createHearts() {
+      for(let i=0; i<15; i++){
+        let heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
+        document.body.appendChild(heart);
+
+        setTimeout(() => {
+          heart.remove();
+        }, 6000);
+      }
+    }
+  </script>
+
+</body>
+</html>
+
